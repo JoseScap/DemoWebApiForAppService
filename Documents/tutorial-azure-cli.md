@@ -40,3 +40,7 @@ az webapp up -g jjpuente -n webapi-allinone -r "dotnet:8" --sku B1 --logs
 - `-r "dotnet:8"` or `--runtime "dotnet:8"`: Specifies the runtime stack for the Web App. In this case, it is .NET version 8.
 - `--sku B1`: Specifies the pricing tier for the App Service plan that will be created and used for the Web App. `B1` represents the Basic pricing tier.
 - `--logs`: Enables logging for the deployment process.
+
+---
+
+Return to [README](../README.md)
