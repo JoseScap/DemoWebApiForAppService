@@ -8,7 +8,7 @@ Azure CLI is a powerful tool that allows you to manage Azure resources directly 
 Using this command, we will create an App Service plan, which will allow us to deploy multiple applications using App Services.
 
 > [!NOTE]
-> For more details on creating an App Service plan, refer to the [Microsoft Learn documentation on creating an Azure App Service plan](https://learn.microsoft.com/en-us/azure/app-service/overview-hosting-plans).
+> For more details on creating an App Service plan, refer to the [Microsoft Learn documentation on Azure App Service plan](https://learn.microsoft.com/en-us/azure/app-service/overview-hosting-plans).
 
 ```sh
 az appservice plan create -g jjpuente -n webplan --sku B1
