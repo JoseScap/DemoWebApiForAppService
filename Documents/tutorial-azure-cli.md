@@ -2,6 +2,8 @@
 Azure CLI is a powerful tool that allows you to manage Azure resources directly from the command line. In this guide, we will walk through the steps to deploy an App Service on Azure, including creating an App Service plan and deploying a Web App.
 
 ## Create App Service Plan
+Using this command, we will create an App Service plan, which will allow us to deploy multiple applications using App Services.
+
 ```sh
 az appservice plan create -g jjpuente -n webplan --sku B1
 ```
@@ -12,6 +14,8 @@ az appservice plan create -g jjpuente -n webplan --sku B1
 - `--sku B1`: Specifies the pricing tier for the App Service plan. `B1` represents the Basic pricing tier.
 
 ## Create App Service
+Using this command, we will create a web application with App Services, utilizing the App Service Plan we created in the previous step.
+
 ```sh
 az webapp up -g jjpuente -p webplan -n webapi -r "dotnet:8" --logs
 ```
@@ -24,6 +28,8 @@ az webapp up -g jjpuente -p webplan -n webapi -r "dotnet:8" --logs
 - `--logs`: Enables logging for the deployment process.
 
 ## Create App Service with Plan
+Using this command, we will create a Web Application using App Services and also an App Service Plan, all in one step.
+
 ```sh
 az webapp up -g jjpuente -n webapi-allinone -r "dotnet:8" --sku B1 --logs
 ```
