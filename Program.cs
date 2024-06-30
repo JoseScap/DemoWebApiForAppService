@@ -1,6 +1,8 @@
-using DemoWebApiForAppService;
-
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddAzureWebAppDiagnostics();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
