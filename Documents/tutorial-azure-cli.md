@@ -8,7 +8,7 @@ Azure CLI is a powerful tool that allows you to manage Azure resources directly 
 Using this command, we will create an App Service plan, which will allow us to deploy multiple applications using App Services.
 
 > [!NOTE]
-> For more details on creating an App Service plan, refer to the [Microsoft Learn documentation on creating an App Service plan](https://learn.microsoft.com/en-us/azure/app-service/overview-hosting-plans).
+> For more details on creating an App Service plan, refer to the [Microsoft Learn documentation on creating an Azure App Service plan](https://learn.microsoft.com/en-us/azure/app-service/overview-hosting-plans).
 
 ```sh
 az appservice plan create -g jjpuente -n webplan --sku B1
@@ -23,7 +23,7 @@ az appservice plan create -g jjpuente -n webplan --sku B1
 Using this command, we will create a web application with App Services, utilizing the App Service Plan we created in the previous step.
 
 > [!NOTE]
-> For more details on creating a web application with Azure CLI, refer to the [Microsoft Learn documentation on creating a web app](https://learn.microsoft.com/en-us/azure/app-service/).
+> For more details on creating a web application with Azure CLI, refer to the [Microsoft Learn documentation on Azure App Service](https://learn.microsoft.com/en-us/azure/app-service/).
 
 ```sh
 az webapp up -g jjpuente -p webplan -n webapi -r "dotnet:8" --logs
@@ -40,7 +40,7 @@ az webapp up -g jjpuente -p webplan -n webapi -r "dotnet:8" --logs
 Using this command, we will create a Web Application using App Services and also an App Service Plan, all in one step.
 
 > [!NOTE]
-> For more details on creating a web application with Azure CLI, refer to the [Microsoft Learn documentation on creating a web app](https://learn.microsoft.com/en-us/azure/app-service/).
+> For more details on creating a web application with Azure CLI, refer to the [Microsoft Learn documentation on Azure App Service](https://learn.microsoft.com/en-us/azure/app-service/).
 
 ```sh
 az webapp up -g jjpuente -n webapi-allinone -r "dotnet:8" --sku B1 --logs
