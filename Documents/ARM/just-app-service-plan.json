@@ -1,0 +1,26 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "name": "webplan",
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2022-09-01",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "B1",
+                "capacity": 1
+            },
+            "tags": {
+                "displayName": "webplan"
+            },
+            "properties": {
+                "name": "webplan"
+            }
+        }
+    ],
+    "outputs": {}
+}
