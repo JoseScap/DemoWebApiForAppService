@@ -11,8 +11,6 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseRedirectTo(from: "/index.html", to: "/swagger");
-
 app.UseHttpsRedirection();
 app.MapControllers();
 
