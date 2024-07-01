@@ -1,0 +1,70 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.2.0.0",
+    "parameters": {
+        "overrideSuffix": {
+            "type": "bool",
+            "defaultValue": false
+        },
+        "suffix": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Suffix to be added to the names if overrideSuffix is true"
+            }
+        }
+    },
+    "functions": [],
+    "variables": {
+        "baseName": "[resourceGroup().name]",
+        "webplanName": "[
+                if(
+                    parameters('overrideSuffix'),
+                    concat(variables('baseName'), '-', parameters('suffix'), '-webplan'),
+                    concat(variables('baseName'), '-webplan')
+                )
+            ]",
+        "webapiName": "[
+                if(
+                    parameters('overrideSuffix'),
+                    concat(variables('baseName'), '-', parameters('suffix'), '-webapi'),
+                    concat(resourceGroup().name, '-webapi')
+                )
+            ]"
+    },
+    "resources": [
+        {
+            "name": "[variables('webplanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2022-09-01",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "B1",
+                "capacity": 1
+            },
+            "tags": {
+                "displayName": "[variables('webplanName')]"
+            },
+            "properties": {
+                "name": "[variables('webplanName')]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2022-09-01",
+            "name": "[variables('webapiName')]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('webplanName'))]"
+            ],
+            "properties": {
+                "siteConfig": {
+                    "netFrameworkVersion": "v8.0"
+                },
+                "serverFarmId": "[variables('webplanName')]",
+                "httpsOnly": true
+            }
+        }
+    ],
+    "outputs": {}
+}
