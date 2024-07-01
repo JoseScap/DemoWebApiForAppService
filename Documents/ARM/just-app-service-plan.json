@@ -3,10 +3,12 @@
     "contentVersion": "1.0.0.0",
     "parameters": {},
     "functions": [],
-    "variables": {},
+    "variables": {
+        "webplanName": "[concat(resourceGroup().name, '-webplan')]"
+    },
     "resources": [
         {
-            "name": "webplan",
+            "name": "[variables('webplanName')]",
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2022-09-01",
             "location": "[resourceGroup().location]",
@@ -15,10 +17,10 @@
                 "capacity": 1
             },
             "tags": {
-                "displayName": "webplan"
+                "displayName": "[variables('webplanName')]"
             },
             "properties": {
-                "name": "webplan"
+                "name": "[variables('webplanName')]"
             }
         }
     ],
