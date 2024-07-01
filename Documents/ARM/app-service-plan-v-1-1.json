@@ -1,0 +1,45 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.1.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {
+        "webplanName": "[concat(resourceGroup().name, '-webplan')]",
+        "webapiName": "[concat(resourceGroup().name, '-webapi')]"
+    },
+    "resources": [
+        {
+            "name": "[variables('webplanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2022-09-01",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "B1",
+                "capacity": 1
+            },
+            "tags": {
+                "displayName": "[variables('webplanName')]"
+            },
+            "properties": {
+                "name": "[variables('webplanName')]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2022-09-01",
+            "name": "[variables('webapiName')]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('webplanName'))]"
+            ],
+            "properties": {
+                "siteConfig": {
+                    "netFrameworkVersion": "v8.0"
+                },
+                "serverFarmId": "[variables('webplanName')]",
+                "httpsOnly": true
+            }
+        }
+    ],
+    "outputs": {}
+}
